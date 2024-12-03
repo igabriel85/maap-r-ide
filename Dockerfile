@@ -124,13 +124,13 @@ RUN \
 
 # Enable crb repositories
 #RUN dnf config-manager --enable crb
-RUN subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+#RUN subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
 
 
 #install packages
-RUN dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel --nobest && \
-    dnf install -y fftw-devel hdf hdf5 libpq-devel protobuf-devel netcdf-devel sqlite-devel openssl-devel udunits2-devel netcdf postgis protobuf-compiler sqlite tcl-devel unixODBC-devel --nobest && \
-    dnf clean all
+#RUN dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel --nobest && \
+#    dnf install -y fftw-devel hdf hdf5 libpq-devel protobuf-devel netcdf-devel sqlite-devel openssl-devel udunits2-devel netcdf postgis protobuf-compiler sqlite tcl-devel unixODBC-devel --nobest && \
+#    dnf clean all
 #
 ## install opengl
 #RUN dnf install -y mesa-libGL mesa-libGLU && \
@@ -218,14 +218,14 @@ ENV HOME=/home/user
 RUN echo "options(repos = c(CRAN = 'https://cloud.r-project.org'))" > $HOME/.Rprofile
 
 #activate env
-#SHELL ["conda", "run", "-n", "pymaap", "/bin/bash", "-c"]
+SHELL ["conda", "run", "-n", "pymaap", "/bin/bash", "-c"]
 
 # install R packages
 RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
 RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lidR")'
 
 # reset shell
-#SHELL ["/bin/bash", "-c"]
+SHELL ["/bin/bash", "-c"]
 
 # Expose port
 EXPOSE 8888
