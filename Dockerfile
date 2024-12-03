@@ -225,7 +225,7 @@ RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lasR", repos="https://r-l
 RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lidR")'
 
 # reset shell
-SHELL ["/bin/bash", "-c"]
+#SHELL ["/bin/bash", "-c"]
 
 # Expose port
 EXPOSE 8888
