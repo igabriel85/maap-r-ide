@@ -209,8 +209,8 @@ WORKDIR /projects
 ENV HOME=/home/user
 
 # install R packages
-Rscript -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
-Rscript -e 'install.packages("lidR")'
+RUN Rscript -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
+RUN Rscript -e 'install.packages("lidR")'
 
 # Expose port
 EXPOSE 8888
