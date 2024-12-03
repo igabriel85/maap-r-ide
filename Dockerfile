@@ -123,8 +123,9 @@ RUN \
 #RUN chgrp -Rf root /home/user && chmod -Rf g+w /home/user
 
 #install packages
-#RUN dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel && \
-#    dnf install -y fftw-devel hdf hdf5 libpq-devel protobuf-devel netcdf-devel sqlite-devel openssl-devel udunits2-devel netcdf postgis protobuf-compiler sqlite tcl-devel unixODBC-devel --nobest && \
+RUN dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel --nobest && \
+    dnf install -y fftw-devel hdf hdf5 libpq-devel protobuf-devel netcdf-devel sqlite-devel openssl-devel udunits2-devel netcdf postgis protobuf-compiler sqlite tcl-devel unixODBC-devel --nobest && \
+    dnf clean all
 #
 ## install opengl
 #RUN dnf install -y mesa-libGL mesa-libGLU && \
