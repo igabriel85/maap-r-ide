@@ -123,7 +123,9 @@ RUN \
 #RUN chgrp -Rf root /home/user && chmod -Rf g+w /home/user
 
 # Enable crb repositories
-RUN dnf config-manager --enable crb
+#RUN dnf config-manager --enable crb
+RUN subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+
 
 #install packages
 RUN dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel --nobest && \
