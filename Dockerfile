@@ -215,9 +215,8 @@ RUN echo "options(repos = c(CRAN = 'https://cloud.r-project.org'))" > $HOME/.Rpr
 RUN source activate pymaap
 
 # install R packages
-RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
-
 RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lidR")'
+RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
 
 # Expose port
 EXPOSE 8888
