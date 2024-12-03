@@ -212,7 +212,7 @@ ENV HOME=/home/user
 RUN echo "options(repos = c(CRAN = 'https://cloud.r-project.org'))" > $HOME/.Rprofile
 
 #activate env
-RUN conda activate pymaap
+RUN source activate pymaap
 
 # install R packages
 RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
