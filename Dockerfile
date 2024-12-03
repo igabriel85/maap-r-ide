@@ -123,12 +123,12 @@ RUN \
 #RUN chgrp -Rf root /home/user && chmod -Rf g+w /home/user
 
 #install packages
-RUN dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel && \
-    dnf install -y fftw-devel hdf hdf5 libpq-devel protobuf-devel netcdf-devel sqlite-devel openssl-devel udunits2-devel netcdf postgis protobuf-compiler sqlite tcl-devel unixODBC-devel --nobest && \
-
-# install opengl
-RUN dnf install -y mesa-libGL mesa-libGLU && \
-    dnf clean all
+#RUN dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel && \
+#    dnf install -y fftw-devel hdf hdf5 libpq-devel protobuf-devel netcdf-devel sqlite-devel openssl-devel udunits2-devel netcdf postgis protobuf-compiler sqlite tcl-devel unixODBC-devel --nobest && \
+#
+## install opengl
+#RUN dnf install -y mesa-libGL mesa-libGLU && \
+#    dnf clean all
 
 # set user as the owner of /opt
 RUN chown -R 1234:0 /opt && \
