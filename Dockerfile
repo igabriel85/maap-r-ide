@@ -208,8 +208,12 @@ WORKDIR /projects
 # reset home to user
 ENV HOME=/home/user
 
+# create .Rprofile and add CRAN mirror
+RUN echo "options(repos = c(CRAN = 'https://cloud.r-project.org'))" > $HOME/.Rprofile
+
 # install R packages
 RUN /opt/conda/envs/pymaap/bin/Rscript -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
+
 RUN /opt/conda/envs/pymaap/bin/Rscript -e 'install.packages("lidR")'
 
 # Expose port
