@@ -30,13 +30,7 @@ RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.n
     dnf update -y && \
     dnf install -y bash curl diffutils git git-lfs iproute jq less lsof man nano procps p7zip p7zip-plugins \
                    perl-Digest-SHA net-tools openssh-clients rsync socat sudo time vim wget zip stow && \
-    dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel && \
-    dnf install -y fftw-devel hdf hdf5 libpq-devel protobuf-devel netcdf-devel sqlite-devel openssl-devel udunits2-devel netcdf postgis protobuf-compiler sqlite tcl-devel unixODBC-devel --nobest && \
                    dnf clean all
-
-# install opengl
-RUN dnf install -y mesa-libGL mesa-libGLU && \
-    dnf clean all
 
 ## gh-cli
 RUN \
@@ -128,6 +122,14 @@ RUN \
 # Ajust permissions
 #RUN chgrp -Rf root /home/user && chmod -Rf g+w /home/user
 
+#install packages
+RUN dnf install -y gdal-devel geos-devel udunits2-devel proj-devel freetype-devel libjpeg-turbo-devel && \
+    dnf install -y fftw-devel hdf hdf5 libpq-devel protobuf-devel netcdf-devel sqlite-devel openssl-devel udunits2-devel netcdf postgis protobuf-compiler sqlite tcl-devel unixODBC-devel --nobest && \
+
+# install opengl
+RUN dnf install -y mesa-libGL mesa-libGLU && \
+    dnf clean all
+
 # set user as the owner of /opt
 RUN chown -R 1234:0 /opt && \
     chmod -R g=u /opt
@@ -138,7 +140,7 @@ ENV CONDA_MAAP_ENV "pymaap"
 ENV PATH "$PATH:$CONDA_DIR/bin"
 #ENV HOME=/home/tooling
 
-
+# copy environment.yml
 COPY environment.yml /
 
 # Set variables.py
