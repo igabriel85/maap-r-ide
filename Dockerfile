@@ -215,8 +215,8 @@ RUN echo "options(repos = c(CRAN = 'https://cloud.r-project.org'))" > $HOME/.Rpr
 SHELL ["conda", "run", "-n", "pymaap", "/bin/bash", "-c"]
 
 # install R packages
-RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lidR")'
 RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
+RUN /opt/conda/envs/pymaap/bin/R -e 'install.packages("lidR")'
 
 # reset shell
 SHELL ["/bin/bash", "-c"]
