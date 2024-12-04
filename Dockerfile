@@ -222,7 +222,7 @@ SHELL ["conda", "run", "-n", "pymaap", "/bin/bash", "-c"]
 
 # install R packages
 RUN /opt/conda/envs/pymaap/bin/Rscript -e 'install.packages("lasR", repos="https://r-lidar.r-universe.dev")'
-RUN /opt/conda/envs/pymaap/bin/Rscript -e 'install.packages("lidR", repos=""http://cran.us.r-project.org")'
+RUN /opt/conda/envs/pymaap/bin/Rscript -e 'install.packages("lidR", repos="http://cran.us.r-project.org")'
 
 # reset shell
 SHELL ["/bin/bash", "-c"]
